@@ -2,6 +2,17 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Cars cars = getCars();
+    }
+
+    private static Cars getCars() {
+        while (true) {
+            try {
+                String[] carNames = InputView.typeCarNames();
+                return new Cars(carNames);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
