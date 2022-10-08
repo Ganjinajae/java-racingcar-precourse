@@ -3,6 +3,17 @@ package racingcar;
 public class Application {
     public static void main(String[] args) {
         Cars cars = getCars();
+        int attempt = getNumberOfAttempts();
+    }
+
+    private static int getNumberOfAttempts() {
+        while (true) {
+            try {
+                return InputView.typeNumberOfAttempts();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private static Cars getCars() {

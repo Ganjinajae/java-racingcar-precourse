@@ -15,4 +15,17 @@ public class InputView {
         String carNames = Console.readLine();
         return carNames.split(SEPARATOR);
     }
+
+    public static int typeNumberOfAttempts() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        String attempt = Console.readLine();
+        validateNumber(attempt);
+        return Integer.parseInt(attempt);
+    }
+
+    private static void validateNumber(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
