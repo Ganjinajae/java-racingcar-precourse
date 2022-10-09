@@ -24,17 +24,13 @@ class CarTest {
 
     @Test
     void 이름_길이_0인_문자열_예외() {
-        Name name = new Name("");
-        Position position = new Position(0);
-        assertThatThrownBy(() -> car = new Car(name, position))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Name(""))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 이름_길이_5자_이상_예외() {
-        Name name = new Name("가나다라마바");
-        Position position = new Position(0);
-        assertThatThrownBy(() -> car = new Car(name, position))
+        assertThatThrownBy(() -> new Name("가나다라마바"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
