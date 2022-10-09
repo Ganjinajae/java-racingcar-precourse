@@ -4,6 +4,10 @@ public class Application {
     public static void main(String[] args) {
         Cars cars = getCars();
         int attempt = getNumberOfAttempts();
+
+        while (attempt-- > 0) {
+            cars.race();
+        }
     }
 
     private static int getNumberOfAttempts() {

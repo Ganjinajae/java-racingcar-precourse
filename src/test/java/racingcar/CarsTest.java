@@ -25,5 +25,4 @@ class CarsTest {
         assertThatThrownBy(() -> new Cars(new String[]{"가"}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }

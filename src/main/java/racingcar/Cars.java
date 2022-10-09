@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +22,18 @@ public class Cars {
     private List<Car> mapper(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i], 0));
+            cars.add(new Car(new Name(carNames[i]), new Position(0)));
         }
         return cars;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public void race() {
+        for (int i = 0; i < carList.size(); i++) {
+            carList.get(i).move(createSingleDigitRandomValue());
+        }
+    }
+
+    private int createSingleDigitRandomValue() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
