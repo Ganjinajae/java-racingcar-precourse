@@ -2,11 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
     private List<Car> carList;
+    private List<Car> winnerList = new ArrayList<>();
 
     public Cars(String[] carNames) {
         validateCarListSize(carNames);
@@ -35,5 +35,30 @@ public class Cars {
 
     private int createSingleDigitRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public List<Car> getWinnerList() {
+        if (winnerList.isEmpty()) {
+            judgeWinners();
+        }
+        return winnerList;
+    }
+
+    private void judgeWinners() {
+        int maxPosition = Collections.max(carList
+                , Comparator.comparingInt(Car::getPosition)).getPosition();
+        for (int i = 0; i < carList.size(); i++) {
+            addCarInMaxPosition(maxPosition, i);
+        }
+    }
+
+    private void addCarInMaxPosition(int maxPosition, int i) {
+        if (carList.get(i).getPosition() == maxPosition) {
+            winnerList.add(carList.get(i));
+        }
     }
 }

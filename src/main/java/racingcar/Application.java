@@ -7,7 +7,9 @@ public class Application {
 
         while (attempt-- > 0) {
             cars.race();
+            OutputView.printResult(cars);
         }
+        OutputView.printWinners(cars);
     }
 
     private static int getNumberOfAttempts() {

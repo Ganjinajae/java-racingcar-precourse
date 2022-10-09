@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-
     private InputView() {
         throw new IllegalStateException("입력을 위한 유틸리티 클래스입니다.");
     }
