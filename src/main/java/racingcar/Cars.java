@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Cars {
     private List<Car> carList;
-    private List<Car> winnerList = new ArrayList<>();
 
     public Cars(String[] carNames) {
         validateCarListSize(carNames);
@@ -42,23 +41,16 @@ public class Cars {
     }
 
     public List<Car> getWinnerList() {
-        if (winnerList.isEmpty()) {
-            judgeWinners();
+        int maxPosition = getMaxPosition();
+        Winners winners = new Winners();
+        for (Car car : carList) {
+            winners.addCarInMaxPosition(car, maxPosition);
         }
-        return winnerList;
+        return winners.getAll();
     }
 
-    private void judgeWinners() {
-        int maxPosition = Collections.max(carList
+    private int getMaxPosition() {
+        return Collections.max(carList
                 , Comparator.comparingInt(Car::getPosition)).getPosition();
-        for (int i = 0; i < carList.size(); i++) {
-            addCarInMaxPosition(maxPosition, i);
-        }
-    }
-
-    private void addCarInMaxPosition(int maxPosition, int i) {
-        if (carList.get(i).getPosition() == maxPosition) {
-            winnerList.add(carList.get(i));
-        }
     }
 }
