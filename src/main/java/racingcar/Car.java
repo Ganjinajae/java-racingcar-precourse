@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Car {
+    private static final int BOUNDARY_VALUE_FOR_MOVE = 4;
     private Name name;
     private Position position;
 
@@ -18,7 +19,7 @@ public class Car {
     }
 
     public void move(int singleDigitRandomValue) {
-        if (singleDigitRandomValue >= 4) {
+        if (singleDigitRandomValue >= BOUNDARY_VALUE_FOR_MOVE) {
             position.move();
         }
     }
